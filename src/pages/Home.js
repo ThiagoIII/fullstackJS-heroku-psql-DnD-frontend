@@ -1,6 +1,6 @@
 import React , { useState} from 'react'
-import { Link } from 'react-router-dom';
 import api from '../services/api'
+import '../styles/home.css'
 
 export default function Home() {
 const [data, setData] = useState(null)
@@ -15,8 +15,9 @@ async function handleGetData(){
 	} 
 }
 
-	return	(<>
-				<h1>Home</h1>
+	return	(
+			<section id="home">
+				<h1>Welcome to Dungeons, Dragons and Magic!</h1>
 				<button onClick={() => handleGetData()}>Show some data</button>
 				<ul>
 					{
@@ -25,11 +26,6 @@ async function handleGetData(){
 						: null
 					}
 				</ul>
-				<ul>
-					<li><Link to='/login'>Login</Link></li>
-					<li><Link to='/register'>Register</Link></li>
-					<li><Link to='/discoverCharsAndAdvs'>discoverCharsAndAdvs</Link></li>
-					<li><Link to='/discoverDnDLore'>discoverDnDLore</Link></li>
-				</ul>
-			</>)
+				
+			</section>)
 }

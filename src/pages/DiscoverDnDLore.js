@@ -1,6 +1,4 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
-
 
 export default function DiscoverDnDLore() {
 	const [dndOpts, setDnD] = useState({
@@ -36,9 +34,8 @@ export default function DiscoverDnDLore() {
 		
 
 	return (
-			<>
+			<section id="dndLore">
 				<h1>DiscoverDnDLore</h1>
-				<Link to='/'>Home</Link>
 				<ul>
 					{
 						dndOptions.map(item => (
@@ -65,6 +62,6 @@ export default function DiscoverDnDLore() {
 						))
 					}
 				</ul>
-			</>
+			</section>
 	)
 }

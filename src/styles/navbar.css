@@ -1,0 +1,30 @@
+
+#navbar {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	height: 10vh;
+}
+
+#navbar li {
+	list-style: none;
+	margin: 0 2rem;	
+}
+
+#navbar a {
+	text-decoration: none;
+	color: white;
+	font-size: 2rem;
+	padding: 0.4rem 0.4rem 0.6rem 0.4rem;
+	transition: all 0.2s ease-out;
+}
+
+#navbar a:hover {
+	color: red;
+	background-color: snow;
+	font-size: 3rem;
+	font-weight: bolder;
+	text-decoration: underline;
+}

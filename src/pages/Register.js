@@ -1,5 +1,7 @@
 import React, {useState} from 'react'
 import api from '../services/api'
+import '../styles/register.css'
+
 
 export default function Register() {
 	const [res, setRes] = useState(null)
@@ -27,7 +29,7 @@ async function handleRegisterUser(e){
 	} 	
 }
 	return (
-	<>
+	<section id="register">
 		<h1>Register</h1>
 		<form onSubmit={e => handleRegisterUser(e)}>
 			<label name="name">How would you like to be called?</label><br></br>
@@ -47,6 +49,6 @@ async function handleRegisterUser(e){
 	} 
 
 		
-	</>
+	</section>
 	)
 }

@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import api from '../services/api'
 import { Redirect } from 'react-router-dom'
 
+import '../styles/login.css'
+
 export default function Login() {
 const [user, setUser] = useState(null)
 
@@ -27,7 +29,7 @@ const [user, setUser] = useState(null)
 	}
 
 	return (
-		<>
+		<section id="login">
 			<h1>Login</h1>
 			<form onSubmit={(e) => handleLogin(e)}>
 				<label name="name">Please insert your name</label><br></br>
@@ -37,6 +39,7 @@ const [user, setUser] = useState(null)
 				<button type="submit">Login</button>
 				<button type="button">Forgot password</button>
 			</form>
+		
 			{
 				user !== null 
 					? <Redirect to={{
@@ -45,6 +48,6 @@ const [user, setUser] = useState(null)
 						}} /> 
 					: null
 			}
-		</>
+		</section>
 	)
 }

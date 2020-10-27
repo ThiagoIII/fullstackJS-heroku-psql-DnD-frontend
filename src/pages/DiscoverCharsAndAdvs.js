@@ -14,7 +14,7 @@ export default function DiscoverCharsAndAdvs() {
 	},[])	
 
 	return (
-		<>
+		<section id="discoverCharsAndAdvs">
 			<h1>DiscoverCharsAndAdvs</h1>
 			<Link to='/'>Home</Link>
 			{
@@ -42,6 +42,6 @@ export default function DiscoverCharsAndAdvs() {
 				:null
 			}
 			
-		</>
+		</section>
 	)
 }

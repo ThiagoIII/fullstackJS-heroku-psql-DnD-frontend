@@ -6,10 +6,12 @@ import Register from './pages/Register'
 import DiscoverDnDLore from './pages/DiscoverDnDLore'
 import DiscoverCharsAndAdvs from './pages/DiscoverCharsAndAdvs'
 import Dashboard from './pages/Dashboard';
+import Navbar from './components/Navbar';
 
 export default function Routes() {
 	return (
 		<BrowserRouter>
+			<Navbar />
 			<Switch> 
 				<Route path="/" exact component={Home} />
 				<Route path="/login" component={Login} />
