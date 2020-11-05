@@ -13,7 +13,7 @@ body div#root {
 
 #root section {
   width: 100%;
-  min-height: 90vh;
+  min-height: 100vh;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -43,3 +43,36 @@ body div#root {
 	font-size: 1rem;
 	margin: 0.5rem 0;
 }
+
+#dashboard h3 {
+  font-size: 3rem;
+  margin: 0;
+}
+
+#dashboard h4 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+#dashboard ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#dashboard li {
+  font-size: 1.5rem;
+  margin: 0;
+  padding: 0.5rem;
+  border: solid 2px blueviolet;
+  background-color: rebeccapurple;
+}
+
+#dashboard li:not(:nth-child(2n)) {
+  margin-top: 1rem;
+}
+

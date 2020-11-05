@@ -1,33 +1,25 @@
 import React, {useState} from 'react'
 import api from '../services/api'
-import '../styles/register.css'
-
+import { handleRegisterValidation } from '../helpers/validation'
 
 export default function Register() {
 	const [res, setRes] = useState(null)
 
-async function handleRegisterUser(e){
-	e.preventDefault()
-	let nameInput = document.getElementById('name')
-	let emailInput = document.getElementById('email')
-	let passwordInput = document.getElementById('password')
-	let confirm_passwordInput = document.getElementById('confirm_password')
-	if(nameInput.value === '' || emailInput.value === '' || passwordInput.value === '' || confirm_passwordInput.value === '' || confirm_passwordInput.value !== passwordInput.value){
-		return alert('Fields cannot be empty or your confirm password is wrong')
+	async function handleRegisterUser(e){
+		let user = handleRegisterValidation(e)
+		if(user){
+			try {
+				let response = await api.post('/register', user)
+				let newUserRegistered = await response.data[0]
+				newUserRegistered === 'error' ? setRes('Error inserting user, please try again') : setRes(newUserRegistered)
+			} catch (error) {
+				console.log('erro ==> ', error)
+			} 	
+		} else {
+			return
+		}
 	}
-	let userToRegister = {
-		name: nameInput.value,
-		email: emailInput.value,
-		password: passwordInput.value,
-	}
-	try {
-		let response = await api.post('/register', userToRegister)
-		let newUserRegistered = await response.data[0]
-		newUserRegistered === 'error' ? setRes('Error inserting user, please try again') : setRes(newUserRegistered)
-	} catch (error) {
-		console.log('erro ==> ', error)
-	} 	
-}
+
 	return (
 	<section id="register">
 		<h1>Register</h1>
@@ -42,13 +34,11 @@ async function handleRegisterUser(e){
 			<input id="confirm_password" type="password" name="confirm_password" /><br></br>
 			<button type="submit">Submit</button>
 		</form>
-	{
-		res !== null 
-		? <p>Ola {res.name}, de email de  {res.email}, joined at: {res.joined}, with id: {res.id}</p>
-		: null
-	} 
-
-		
+		{
+			res !== null 
+			? <p>Ola {res.name}, de email de  {res.email}, joined at: {res.joined}, with id: {res.id}</p>
+			: null
+		} 
 	</section>
 	)
 }
