@@ -1,3 +1,13 @@
+https://fullstack-js-heroku-psql-dn-d-frontend.vercel.app/
+
+So this is the frontend part of my Dnd like project, I did this project more to learn a bit about full stack apps, so dont mind the styling. Its deployed to Vercel to test it out and I am pretty happy with it, super easy and quick!
+
+I will keep working on it indefinitely, adding features and improving the code.
+
+Feel free to fork it and PR, and I hope you enjoy as much as I did.
+
+Thank you!
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
