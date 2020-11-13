@@ -9,7 +9,6 @@ const [user, setUser] = useState(null)
 
 	const handleLogin = async (e) => {
 		let user = handleLoginValidation(e)
-		console.log('user from login validaion',user)
 		if(user){
 			try {
 				let response = await api.post('/login', user)

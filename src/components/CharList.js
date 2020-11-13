@@ -9,7 +9,7 @@ const CharList = ({userInfo}) => {
 													<li>{char.charname}</li>
 													<li>{char.charhistory}</li>
 												</>)
-							: null}
+							: <h4>No chars registered from you!</h4>}
 				</ul>
 			</>
 }

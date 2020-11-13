@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+Array [
+  <h3>
+    Quests
+  </h3>,
+  <ul>
+    <li>
+      quest1
+    </li>
+    <li>
+      this is the first quest
+    </li>
+    <li>
+      quest2
+    </li>
+    <li>
+      this is the second quest
+    </li>
+    <li>
+      quest3
+    </li>
+    <li>
+      this is the third quest
+    </li>
+  </ul>,
+]
+`;
+
+exports[`renders correctly: 
+    Array [
+      <h3>
+        Quests
+      </h3>,
+      <ul>
+        <li>
+          quest1
+        </li>
+        <li>
+          this is the first quest
+        </li>
+        <li>
+          quest2
+        </li>
+        <li>
+          this is the second quest
+        </li>
+        <li>
+          quest3
+        </li>
+        <li>
+          this is the third quest
+        </li>
+      </ul>,
+    ]
+   1`] = `
+Array [
+  <h3>
+    Quests
+  </h3>,
+  <ul>
+    <li>
+      quest1
+    </li>
+    <li>
+      this is the first quest
+    </li>
+    <li>
+      quest2
+    </li>
+    <li>
+      this is the second quest
+    </li>
+    <li>
+      quest3
+    </li>
+    <li>
+      this is the third quest
+    </li>
+  </ul>,
+]
+`;

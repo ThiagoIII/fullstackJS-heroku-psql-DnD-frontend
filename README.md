@@ -1,6 +1,10 @@
 https://fullstack-js-heroku-psql-dn-d-frontend.vercel.app/
 
-So this is the frontend part of my Dnd like project, I did this project more to learn a bit about full stack apps, so dont mind the styling. Its deployed to Vercel to test it out and I am pretty happy with it, super easy and quick!
+Don't mind the design! Still working on that, gotta implement dark theme, reduced motion rules and some.
+
+Right now working on testing code
+
+So this is the frontend part of my Dnd like project, I did this project to learn a bit about full stack apps, so dont mind the styling. I've deployed it to Vercel to test it out and I am pretty happy with it, super easy and quick!
 
 I will keep working on it indefinitely, adding features and improving the code.
 

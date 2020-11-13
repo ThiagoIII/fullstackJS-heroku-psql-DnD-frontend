@@ -5,3 +5,4 @@ export default function Home() {
 				<h1>Welcome to Dungeons, Dragons and Magic!</h1>	
 			</section>
 }
+
