@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import CharList from '../components/CharList'
 import QuestList from '../components/QuestList'
 import api from '../services/api'
-import { handleCharRegisterValidation, handleQuestRegisterValidation } from '../helpers/validation'
+//import { handleCharRegisterValidation, handleQuestRegisterValidation } from '../helpers/validation'
 import { GoogleLogout } from 'react-google-login';
 import { Redirect } from 'react-router-dom'
 
@@ -22,11 +22,9 @@ const Dashboard = (props) => {
 	},[user, charRegistered, questRegistered])
 
 	
-	async function handleCharQuestRegistration(e, opt){
-		let toRegister, response
-		toRegister = opt === 'char' 
-			? handleCharRegisterValidation(e, user) 
-			: handleQuestRegisterValidation(e, user)
+	async function handleCharQuestRegistration(e, opt, user){
+		let toRegister = await handleCharQuestRegistration(e,opt,user)
+		let response
 		if(toRegister){
 			try {
 				response = await api.post(`/register${opt}`, toRegister).then(res => res.data[0])
@@ -34,15 +32,15 @@ const Dashboard = (props) => {
 					? opt === 'char'
 						? setcharRegistered(response)
 						: setQuestRegistered(response)
-					: alert(`Error registering ${opt}`)
+					: alert(`Error registering ${opt}: ${response.json()}`)
 			} catch (error) {
 				console.log(error)
 			}
 		} 
 	}
 
-	const logout = () => {
-		alert('You will be logged out now.')
+	const logoutDashboard = () => {
+		alert('You will be logged out from Dashboard now.')
 		return (
 			<Redirect to={{
 				pathname: "/login",
@@ -54,7 +52,7 @@ const Dashboard = (props) => {
 			<GoogleLogout
 				clientId="416809222050-fee34iiph6k9lmmis8qgse4a0g2gs6lr.apps.googleusercontent.com"
 				buttonText="Logout"
-				onLogoutSuccess={logout}
+				onLogoutSuccess={logoutDashboard}
 			>
 			</GoogleLogout>
 			<h1>Welcome,{user.name} </h1>
