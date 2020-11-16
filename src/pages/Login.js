@@ -42,7 +42,7 @@ const [user, setUser] = useState(null)
 	const logout = () => {
 		alert('You will be logged out now.')
 	}
-	
+
 	console.log(user)
 	return <section id="login">
 			<h1>Login</h1>
@@ -62,14 +62,7 @@ const [user, setUser] = useState(null)
 				cookiePolicy={'single_host_origin'}
 				responseType='code,token'
 				style={{marginTop: '2rem'}}
-				isSignedIn={true}
 			/>
-			<GoogleLogout
-				clientId="416809222050-fee34iiph6k9lmmis8qgse4a0g2gs6lr.apps.googleusercontent.com"
-				buttonText="Logout"
-				onLogoutSuccess={logout}
-			>Logout
-			</GoogleLogout>
 			{
 				user !== null 
 					? <Redirect to={{

@@ -45,12 +45,16 @@ const Dashboard = (props) => {
 		alert('You will be logged out from Dashboard now.')
 		setRedirect(true)
 	}
+	const logoutFailure = () => {
+		alert('Failed in logout')
+	}
 
 	return <section id='dashboard'>
 			<GoogleLogout
 				clientId="416809222050-fee34iiph6k9lmmis8qgse4a0g2gs6lr.apps.googleusercontent.com"
 				buttonText="Logout"
 				onLogoutSuccess={logoutDashboard}
+				onFailure={logoutFailure}
 			>
 			</GoogleLogout>
 			<h1>Welcome,{user.name} </h1>
@@ -84,7 +88,7 @@ const Dashboard = (props) => {
 				</p>
 			}
 			{
-				redirect != null
+				redirect !== null
 					? <Redirect to={{ pathname: "/login" }} />
 					: null
 			}
