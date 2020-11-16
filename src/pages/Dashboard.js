@@ -41,11 +41,7 @@ const Dashboard = (props) => {
 
 	const logoutDashboard = () => {
 		alert('You will be logged out from Dashboard now.')
-		return (
-			<Redirect to={{
-				pathname: "/login",
-				}} /> 
-		)
+		return <Redirect to={{pathname: "/login"}} /> 
 	}
 
 	return <section id='dashboard'>
