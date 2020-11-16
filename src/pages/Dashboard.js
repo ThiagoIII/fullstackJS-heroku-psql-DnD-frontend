@@ -11,6 +11,7 @@ const Dashboard = (props) => {
 	const [userInfo, setUserInfo] = useState(null)
 	const [charRegistered, setcharRegistered] = useState(null)
 	const [questRegistered, setQuestRegistered] = useState(null)
+	const [redirect, setRedirect] = useState(null)
 	const user = props.location.state.user
 
 
@@ -42,7 +43,7 @@ const Dashboard = (props) => {
 
 	const logoutDashboard = () => {
 		alert('You will be logged out from Dashboard now.')
-		return <Redirect to={{pathname: "/login"}} /> 
+		setRedirect(true)
 	}
 
 	return <section id='dashboard'>
@@ -81,6 +82,11 @@ const Dashboard = (props) => {
 				<p>
 					Quest registrada com success: {questRegistered.questname}, on the id: {questRegistered.id}
 				</p>
+			}
+			{
+				redirect != null
+					? <Redirect to={{ pathname: "/login" }} />
+					: null
 			}
 		</section>
 }
