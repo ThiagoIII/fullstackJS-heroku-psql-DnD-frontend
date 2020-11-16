@@ -23,25 +23,22 @@ const [user, setUser] = useState(null)
 		}
 	}
 
-	const handleLoginSuccess = (response) => {
-		if(response.accessToken) {
-			const { name, email, imageUrl } = response.profileObj
+	const handleLoginSuccess = (res) => {
+			const { name, email, imageUrl } = res.profileObj
 			const profile = {
 				name: name,
 				email: email,
 				image: imageUrl,
-				TokenId: response.tokenId
+				TokenId: res.tokenId
 			}
+			console.log('profile')
 			setUser(profile)
-		} else {
-			return
-		}
 	}
 
-	const handleLoginFailure = () => {
-		alert('problems with your login')
+	const handleLoginFailure = (res) => {
+		alert('problems with your login',res)
 	}
-
+	console.log('user')
 	return <section id="login">
 			<h1>Login</h1>
 			<form onSubmit={(e) => handleLogin(e)}>
@@ -59,6 +56,8 @@ const [user, setUser] = useState(null)
 				onFailure={()=>  handleLoginFailure}
 				cookiePolicy={'single_host_origin'}
 				responseType='code,token'
+				style={{marginTop: '2rem'}}
+				isSignedIn={true}
 			/>
 			{
 				user !== null 

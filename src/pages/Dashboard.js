@@ -3,6 +3,7 @@ import CharList from '../components/CharList'
 import QuestList from '../components/QuestList'
 import api from '../services/api'
 import { handleCharRegisterValidation, handleQuestRegisterValidation } from '../helpers/validation'
+import { GoogleLogout } from 'react-google-login';
 
 const Dashboard = (props) => {
 	const [userInfo, setUserInfo] = useState(null)
@@ -72,7 +73,18 @@ const Dashboard = (props) => {
 			return
 		}
 	}
+
+	const logout = () => {
+		alert('You will be logged out now.')
+	}
+
 	return <section id='dashboard'>
+			<GoogleLogout
+				clientId="416809222050-fee34iiph6k9lmmis8qgse4a0g2gs6lr.apps.googleusercontent.com"
+				buttonText="Logout"
+				onLogoutSuccess={logout}
+			>Logout
+			</GoogleLogout>
 			<h1>Welcome,{user.name} </h1>
 			<form onSubmit={e => handleCharQuestRegistration(e, 'char')}>
 				<label name="name">How the char would like to be called?</label><br></br>
