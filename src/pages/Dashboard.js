@@ -4,6 +4,7 @@ import QuestList from '../components/QuestList'
 import api from '../services/api'
 import { handleCharRegisterValidation, handleQuestRegisterValidation } from '../helpers/validation'
 import { GoogleLogout } from 'react-google-login';
+import { Redirect } from 'react-router-dom'
 
 const Dashboard = (props) => {
 	const [userInfo, setUserInfo] = useState(null)
@@ -21,43 +22,11 @@ const Dashboard = (props) => {
 	},[user, charRegistered, questRegistered])
 
 	
-	/* async function handleCharRegister(e){
-		let charToRegister = handleCharRegisterValidation(e, user)
-		if(charToRegister){
-			try {
-				let response = await api.post('/registerChar', charToRegister)
-				let newCharRegistered = await response.data[0]
-				newCharRegistered === 'error' 
-					? setcharRegistered('Error inserting char, please try again') 
-					: setcharRegistered(newCharRegistered)
-			} catch (error) {
-				console.log(error)
-			}
-		} else {
-			return
-		}
-	}
-
-	async function handleQuestRegister(e){
-		let questToRegister = handleQuestRegisterValidation(e, user)
-		if(questToRegister){
-			try {
-				let response = await api.post('/registerQuest', questToRegister)
-				let newQuestRegistered = await response.data[0]
-				newQuestRegistered === 'error' 
-					? setQuestRegistered('Error inserting quest, please try again') 
-					: setQuestRegistered(newQuestRegistered)
-			} catch (error) {
-				console.log(error)
-			}
-		} else {
-			return
-		}
-	} */
-
 	async function handleCharQuestRegistration(e, opt){
 		let toRegister, response
-		toRegister = opt === 'char' ? handleCharRegisterValidation(e, user) : handleQuestRegisterValidation(e, user)
+		toRegister = opt === 'char' 
+			? handleCharRegisterValidation(e, user) 
+			: handleQuestRegisterValidation(e, user)
 		if(toRegister){
 			try {
 				response = await api.post(`/register${opt}`, toRegister).then(res => res.data[0])
@@ -69,13 +38,16 @@ const Dashboard = (props) => {
 			} catch (error) {
 				console.log(error)
 			}
-		} else {
-			return
-		}
+		} 
 	}
 
 	const logout = () => {
 		alert('You will be logged out now.')
+		return (
+			<Redirect to={{
+				pathname: "/login",
+				}} /> 
+		)
 	}
 
 	return <section id='dashboard'>
@@ -105,9 +77,15 @@ const Dashboard = (props) => {
 									<QuestList userInfo={userInfo[1]} />
 								</>
 			}
-			{charRegistered !== null && <p>Char registrado com success: {charRegistered.charname}, on the id: {charRegistered.id}</p>
+			{charRegistered !== null && 
+				<p>
+					Char registrado com success: {charRegistered.charname}, on the id: {charRegistered.id}
+				</p>
 			}
-			{questRegistered !== null && <p>Quest registrada com success: {questRegistered.questname}, on the id: {questRegistered.id}</p>
+			{questRegistered !== null && 
+				<p>
+					Quest registrada com success: {questRegistered.questname}, on the id: {questRegistered.id}
+				</p>
 			}
 		</section>
 }
