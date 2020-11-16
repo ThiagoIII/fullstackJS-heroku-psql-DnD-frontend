@@ -19,7 +19,7 @@ const Dashboard = (props) => {
 		}
 	},[user, charRegistered, questRegistered])
 
-
+	
 	/* async function handleCharRegister(e){
 		let charToRegister = handleCharRegisterValidation(e, user)
 		if(charToRegister){

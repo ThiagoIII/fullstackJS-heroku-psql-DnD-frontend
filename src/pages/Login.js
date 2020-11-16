@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import api from '../services/api'
 import { Redirect } from 'react-router-dom'
 import { handleLoginValidation } from '../helpers/validation'
+import { GoogleLogin } from 'react-google-login';
 
 
 export default function Login() {
@@ -22,6 +23,25 @@ const [user, setUser] = useState(null)
 		}
 	}
 
+	const handleLoginSuccess = (response) => {
+		if(response.accessToken) {
+			const { name, email, imageUrl } = response.profileObj
+			const profile = {
+				name: name,
+				email: email,
+				image: imageUrl,
+				TokenId: response.tokenId
+			}
+			setUser(profile)
+		} else {
+			return
+		}
+	}
+
+	const handleLoginFailure = () => {
+		alert('problems with your login')
+	}
+
 	return <section id="login">
 			<h1>Login</h1>
 			<form onSubmit={(e) => handleLogin(e)}>
@@ -32,7 +52,14 @@ const [user, setUser] = useState(null)
 				<button type="submit">Login</button>
 				<button type="button">Forgot password</button>
 			</form>
-		
+			<GoogleLogin
+				clientId="416809222050-fee34iiph6k9lmmis8qgse4a0g2gs6lr.apps.googleusercontent.com"
+				buttonText="Login"
+				onSuccess={() => handleLoginSuccess}
+				onFailure={()=>  handleLoginFailure}
+				cookiePolicy={'single_host_origin'}
+				responseType='code,token'
+			/>
 			{
 				user !== null 
 					? <Redirect to={{
