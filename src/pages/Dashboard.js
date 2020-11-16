@@ -83,7 +83,7 @@ const Dashboard = (props) => {
 				clientId="416809222050-fee34iiph6k9lmmis8qgse4a0g2gs6lr.apps.googleusercontent.com"
 				buttonText="Logout"
 				onLogoutSuccess={logout}
-			>Logout
+			>
 			</GoogleLogout>
 			<h1>Welcome,{user.name} </h1>
 			<form onSubmit={e => handleCharQuestRegistration(e, 'char')}>

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import api from '../services/api'
 import { Redirect } from 'react-router-dom'
 import { handleLoginValidation } from '../helpers/validation'
-import { GoogleLogin } from 'react-google-login';
+import { GoogleLogin, GoogleLogout } from 'react-google-login';
 
 
 export default function Login() {
@@ -38,6 +38,11 @@ const [user, setUser] = useState(null)
 	const handleLoginFailure = (res) => {
 		alert('problems with your login',res)
 	}
+
+	const logout = () => {
+		alert('You will be logged out now.')
+	}
+	
 	console.log(user)
 	return <section id="login">
 			<h1>Login</h1>
@@ -59,6 +64,12 @@ const [user, setUser] = useState(null)
 				style={{marginTop: '2rem'}}
 				isSignedIn={true}
 			/>
+			<GoogleLogout
+				clientId="416809222050-fee34iiph6k9lmmis8qgse4a0g2gs6lr.apps.googleusercontent.com"
+				buttonText="Logout"
+				onLogoutSuccess={logout}
+			>Logout
+			</GoogleLogout>
 			{
 				user !== null 
 					? <Redirect to={{

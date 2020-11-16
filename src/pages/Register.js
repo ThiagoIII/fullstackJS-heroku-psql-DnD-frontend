@@ -27,7 +27,7 @@ export default function Register() {
 			<label name="name">How would you like to be called?</label><br></br>
 			<input id="name" type="text" name="name" /><br></br>
 			<label name="email">What is your email address ?</label><br></br>
-			<input id="email" type="email" name="email" /><br></br>
+			<input id="email" type="email" name="email"/><br></br>
 			<label name="password">Create a password, please</label><br></br>
 			<input id="password" type="password" name="password" /><br></br>
 			<label name="confirm_password">Confirm a password, please</label><br></br>
