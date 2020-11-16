@@ -31,14 +31,14 @@ const [user, setUser] = useState(null)
 				image: imageUrl,
 				TokenId: res.tokenId
 			}
-			console.log('profile')
+			console.log(profile)
 			setUser(profile)
 	}
 
 	const handleLoginFailure = (res) => {
 		alert('problems with your login',res)
 	}
-	console.log('user')
+	console.log(user)
 	return <section id="login">
 			<h1>Login</h1>
 			<form onSubmit={(e) => handleLogin(e)}>
