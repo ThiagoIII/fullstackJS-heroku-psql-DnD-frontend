@@ -30,7 +30,7 @@ export default function Register() {
 			<input id="email" type="email" name="email" /><br></br>
 			<label name="password">Create a password, please</label><br></br>
 			<input id="password" type="password" name="password" /><br></br>
-			<label name="confirm_password">Create a password, please</label><br></br>
+			<label name="confirm_password">Confirm a password, please</label><br></br>
 			<input id="confirm_password" type="password" name="confirm_password" /><br></br>
 			<button type="submit">Submit</button>
 		</form>

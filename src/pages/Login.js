@@ -52,8 +52,8 @@ const [user, setUser] = useState(null)
 			<GoogleLogin
 				clientId="416809222050-fee34iiph6k9lmmis8qgse4a0g2gs6lr.apps.googleusercontent.com"
 				buttonText="Login"
-				onSuccess={() => handleLoginSuccess}
-				onFailure={()=>  handleLoginFailure}
+				onSuccess={handleLoginSuccess}
+				onFailure={handleLoginFailure}
 				cookiePolicy={'single_host_origin'}
 				responseType='code,token'
 				style={{marginTop: '2rem'}}
