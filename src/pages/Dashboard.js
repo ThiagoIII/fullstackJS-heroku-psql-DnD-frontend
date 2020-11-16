@@ -3,6 +3,7 @@ import CharList from '../components/CharList'
 import QuestList from '../components/QuestList'
 import api from '../services/api'
 //import { handleCharRegisterValidation, handleQuestRegisterValidation } from '../helpers/validation'
+import handleCharQuestValidation from '../helpers/charQuestRegistration'
 import { GoogleLogout } from 'react-google-login';
 import { Redirect } from 'react-router-dom'
 
@@ -23,7 +24,7 @@ const Dashboard = (props) => {
 
 	
 	async function handleCharQuestRegistration(e, opt, user){
-		let toRegister = await handleCharQuestRegistration(e,opt,user)
+		let toRegister = await handleCharQuestValidation(e,opt,user)
 		let response
 		if(toRegister){
 			try {
@@ -52,14 +53,14 @@ const Dashboard = (props) => {
 			>
 			</GoogleLogout>
 			<h1>Welcome,{user.name} </h1>
-			<form onSubmit={e => handleCharQuestRegistration(e, 'char')}>
+			<form onSubmit={e => handleCharQuestRegistration(e, 'char', user)}>
 				<label name="name">How the char would like to be called?</label><br></br>
 				<input id="nameChar" type="text" name="name" /><br></br>
 				<label name="history">Char history, please</label><br></br>
 				<input id="historyChar" type="text" name="history" /><br></br>
 				<button type="submit">Submit</button>
 			</form>
-			<form onSubmit={e => handleCharQuestRegistration(e , 'quest')}>
+			<form onSubmit={e => handleCharQuestRegistration(e , 'quest', user)}>
 				<label name="name">How the quest is called?</label><br></br>
 				<input id="nameQuest" type="text" name="name" /><br></br>
 				<label name="history">History, please</label><br></br>
