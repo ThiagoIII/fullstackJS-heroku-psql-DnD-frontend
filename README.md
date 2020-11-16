@@ -1,10 +1,17 @@
 https://fullstack-js-heroku-psql-dn-d-frontend.vercel.app/
 
-Don't mind the design! Still working on that, gotta implement dark theme, reduced motion rules and some.
+So this is the frontend part of my Dnd like project, I did this project to learn a bit about full stack apps I've deployed it to Vercel to test it out and I am pretty happy with it, super easy and quick!
 
-Right now working on testing code
+Frontend: ReactJS with Hooks
+Backend: NodeJS/Express
+Database: Heroku Postgres
+Hosted at: Vercel and Heroku
 
-So this is the frontend part of my Dnd like project, I did this project to learn a bit about full stack apps, so dont mind the styling. I've deployed it to Vercel to test it out and I am pretty happy with it, super easy and quick!
+Don't mind the design! Still working on that, gotta implement dark theme, reduced motion rules and will apply some Material components
+
+I wrote a couple of very basics tests just to get started, I will now read more about them and maybe take a course or watch some youtube tutorials.
+
+Implemented a basic Google login and I will read more about login sessions.
 
 I will keep working on it indefinitely, adding features and improving the code.
 
