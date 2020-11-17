@@ -1,75 +1,32 @@
-import React, { useState } from 'react'
-import api from '../services/api'
+import React, { useContext } from 'react'
 import { Redirect } from 'react-router-dom'
-import { handleLoginValidation } from '../helpers/validation'
-import { GoogleLogin, GoogleLogout } from 'react-google-login';
-
+import { GoogleLogin } from 'react-google-login';
+import { SignedStatusContext } from '../context/signedStatusContext/signedStatusContext';
+import LoginForm from '../components/forms/LoginFrom'
+import { handleGoogleLoginSuccess, handleGoogleLoginFailure } from '../helpers/googleHelpers'
 
 export default function Login() {
-const [user, setUser] = useState(null)
+	const { state, dispatch } = useContext(SignedStatusContext)
 
-	const handleLogin = async (e) => {
-		let user = handleLoginValidation(e)
-		if(user){
-			try {
-				let response = await api.post('/login', user)
-				let responseJson = response.data
-				setUser(responseJson)  
-			} catch (error) {
-				console.log(error)
-			}
-		} else {
-			return 
-		}
-	}
-
-	const handleLoginSuccess = (res) => {
-			const { name, email, imageUrl } = res.profileObj
-			const profile = {
-				name: name,
-				email: email,
-				image: imageUrl,
-				TokenId: res.tokenId
-			}
-			console.log(profile)
-			setUser(profile)
-	}
-
-	const handleLoginFailure = (res) => {
-		alert('problems with your login',res)
-	}
-
-	const logout = () => {
-		alert('You will be logged out now.')
-	}
-
-	console.log(user)
-	return <section id="login">
-			<h1>Login</h1>
-			<form onSubmit={(e) => handleLogin(e)}>
-				<label name="name">Please insert your name</label><br></br>
-				<input id="nameLogin" type="text" name="name" autoComplete="username" /><br></br>
-				<label name="password">Please insert your password</label><br></br>
-				<input id="passwordLogin" type="password" name="password" autoComplete="current-password" /><br></br>
-				<button type="submit">Login</button>
-				<button type="button">Forgot password</button>
-			</form>
-			<GoogleLogin
-				clientId="416809222050-fee34iiph6k9lmmis8qgse4a0g2gs6lr.apps.googleusercontent.com"
-				buttonText="Login"
-				onSuccess={handleLoginSuccess}
-				onFailure={handleLoginFailure}
-				cookiePolicy={'single_host_origin'}
-				responseType='code,token'
-				style={{marginTop: '2rem'}}
-			/>
-			{
-				user !== null 
-					? <Redirect to={{
-						pathname: "/dashboard",
-						state: { user: user	}
-						}} /> 
-					: null
-			}
-		</section>
+	return <>
+		{
+			state.signedStatus
+				? <Redirect to={{
+					pathname: "/dashboard"
+					}} />
+				: <section id="login">
+					<h1>Login</h1>
+					<LoginForm dispatch={ dispatch } />
+					<GoogleLogin
+						clientId="416809222050-fee34iiph6k9lmmis8qgse4a0g2gs6lr.apps.googleusercontent.com"
+						buttonText="Login"
+						onSuccess={(res) => handleGoogleLoginSuccess(res, dispatch)}
+						onFailure={(res) => handleGoogleLoginFailure(res)}
+						cookiePolicy={'single_host_origin'}
+						responseType='code,token'
+						id="googleLogin"
+						/>
+					</section>
+		}		
+		</>
 }
