@@ -31,10 +31,10 @@ export function handleLoginValidation(e){
 	}
 }
 
-export function handleCharRegisterValidation(e, user){
+export function handleCharValidation(e, user){
 	e.preventDefault()
-		let nameCharInput = document.getElementById('nameChar')
-		let historyCharInput = document.getElementById('historyChar')
+		let nameCharInput = document.getElementById('charname')
+		let historyCharInput = document.getElementById('charhistory')
 		if(nameCharInput.value === '' || historyCharInput.value === ''){
 			return alert('Fields cannot be empty')
 		} else {
@@ -47,10 +47,10 @@ export function handleCharRegisterValidation(e, user){
 		}
 		
 }
-export function handleQuestRegisterValidation(e, user){
+export function handleQuestValidation(e, user){
 	e.preventDefault()
-		let nameQuestInput = document.getElementById('nameQuest')
-		let historyQuestInput = document.getElementById('historyQuest')
+		let nameQuestInput = document.getElementById('questname')
+		let historyQuestInput = document.getElementById('questhistory')
 		if(nameQuestInput.value === '' || historyQuestInput.value === ''){
 			return alert('Fields cannot be empty')
 		} else {

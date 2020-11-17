@@ -1,9 +1,9 @@
-import { handleCharRegisterValidation, handleQuestRegisterValidation } from './validation'
+import { handleCharValidation, handleQuestValidation } from './validation'
 
-async function handleCharQuestValidation(e, opt, user){
+async function callCharOrQuestValidators(e, opt, user){
 	return opt === 'char' 
-		? handleCharRegisterValidation(e, user) 
-		: handleQuestRegisterValidation(e, user)
+		? handleCharValidation(e, user) 
+		: handleQuestValidation(e, user)
 }
 
-export default handleCharQuestValidation
+export default callCharOrQuestValidators
