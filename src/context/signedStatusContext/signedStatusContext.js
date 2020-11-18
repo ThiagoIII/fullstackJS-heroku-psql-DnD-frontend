@@ -2,7 +2,7 @@ import React, { createContext, useReducer } from 'react'
 import { signedStatusReducer } from '../reducers'
 
 const initalSignedStatusState = {
-	signedStatus: false
+	isLoggedIn: false
 }
 
 export const SignedStatusContext = createContext(initalSignedStatusState)

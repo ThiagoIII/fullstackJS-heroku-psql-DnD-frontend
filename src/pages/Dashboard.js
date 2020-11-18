@@ -5,8 +5,7 @@ import { SignedStatusContext } from '../context/signedStatusContext/signedStatus
 import api from '../services/api'
 import { logoutDashboard, logoutFailure } from '../helpers/handleLogOut'
 import CQform from '../components/forms/CQform'
-import CharList from '../components/CharList'
-import QuestList from '../components/QuestList'
+import UserList from '../components/UserList';
 
 
 const Dashboard = () => {
@@ -24,9 +23,9 @@ const Dashboard = () => {
 	},[])
 
 	
-	console.log(userInfo)
+
 	return  <>
-		{	!state.signedStatus 
+		{	!state.isLoggedIn 
 				? <Redirect to={{
 					pathname: "/login"
 					}} /> 
@@ -34,24 +33,23 @@ const Dashboard = () => {
 					<GoogleLogout
 						clientId="416809222050-fee34iiph6k9lmmis8qgse4a0g2gs6lr.apps.googleusercontent.com"
 						buttonText="Logout"
-						onLogoutSuccess={logoutDashboard(dispatch)}
+						onLogoutSuccess={(dispatch) => logoutDashboard(dispatch)}
 						onFailure={logoutFailure}
-					/>
-					<h1>Welcome,{userInfo !== null ? userInfo[2].name : 'Sorry no name for you'} </h1>
+					/> 
+					<h1>Welcome,{userInfo !== null ? userInfo[2].name : 'Getting your name'} </h1>
 					{
 						userInfo !== null &&
 						userInfo[2].image &&
 						<img src={userInfo[2].image} alt={`${userInfo[2].name}ProfileImage`}/>
-						
 					}
-					<button type="button" name="button" onClick={() => logoutDashboard(dispatch)}>Logout</button>
+					<button type="button" name="button" onClick={() => logoutDashboard(dispatch)}>Logout</button> 
 					{
 					userInfo && 
 					<>	
 						<CQform opt='char' userInfo={userInfo[2]} />
-						<CQform opt='quest' userInfo={userInfo[2]} />
-						<CharList userInfo={userInfo[0]} />
-						<QuestList userInfo={userInfo[1]} />
+						<CQform opt='quest' userInfo={userInfo[2]} />				
+						<UserList opt='char' userInfo={userInfo[0]} />
+						<UserList opt='quest' userInfo={userInfo[1]} />
 					</>
 					}
 				</section>

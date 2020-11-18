@@ -10,7 +10,7 @@ const Navbar = () => {
 			<ul id="navbar">
 				<li><Link exact='true' to='/'>Home</Link></li>
 				{
-					state.signedStatus
+					state.isLoggedIn
 					?   <li><Link to='/dashboard'>Dashboard</Link></li>
 					:   <>
 							<li><Link to='/login'>Login</Link></li>

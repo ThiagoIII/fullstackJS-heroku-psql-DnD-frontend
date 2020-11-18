@@ -1,31 +1,8 @@
 import React from 'react'
-import callCharOrQuestValidators from '../../helpers/charQuestRegistration'
-import api from '../../services/api'
+import handleDashboardRegister from '../../helpers/charQuestRegistration'
 
 const CQform = (props) => {
 	const { opt, userInfo } = props
-
-	const infoMessage = (opt,name,registerStatus) => {
-		let span = document.getElementById(`${opt}infomessage`)
-		registerStatus 
-		? span.textContent = `${opt} registered with success! ${opt} name: ${name}`
-		: span.textContent = `Error registering ${opt}, please try again}`
-	}
-
-	async function handleDashboardRegister(e, opt, user){
-		let toRegister = await callCharOrQuestValidators(e,opt,user)
-		if(toRegister){
-			try {
-				let response = await api.post(`/register${opt}`, toRegister).then(res => res)
-				const { [opt + 'name']: name } = await response.data[0]
-				response.status !== 400 
-					? infoMessage(opt,name,true)
-					: infoMessage(opt,name,false)
-			} catch (error) {
-				console.log(error)
-			}
-		} 
-	}
 
 	return <>
 		<form onSubmit={e => handleDashboardRegister(e , opt , userInfo)}>

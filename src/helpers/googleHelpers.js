@@ -10,9 +10,9 @@ export const handleGoogleLoginSuccess = (res,dispatch) => {
 	} 
 	localStorage.setItem('userIdLoggedIn', JSON.stringify(profile))
 	handleChangeSignedStatus(dispatch, true)
-	console.log(res.profileObj)
 }
 
 export const handleGoogleLoginFailure = (res) => {
-alert('problems with your login',res)
+alert('problems with your login with GOOGLE')
+console.log(res)
 }

@@ -8,9 +8,13 @@ import { handleGoogleLoginSuccess, handleGoogleLoginFailure } from '../helpers/g
 export default function Login() {
 	const { state, dispatch } = useContext(SignedStatusContext)
 
+const googleLogIn = (res,dispatch) => {
+	handleGoogleLoginSuccess(res, dispatch)
+}
+
 	return <>
 		{
-			state.signedStatus
+			state.isLoggedIn
 				? <Redirect to={{
 					pathname: "/dashboard"
 					}} />
@@ -20,10 +24,8 @@ export default function Login() {
 					<GoogleLogin
 						clientId="416809222050-fee34iiph6k9lmmis8qgse4a0g2gs6lr.apps.googleusercontent.com"
 						buttonText="Login"
-						onSuccess={(res) => handleGoogleLoginSuccess(res, dispatch)}
-						onFailure={(res) => handleGoogleLoginFailure(res)}
-						cookiePolicy={'single_host_origin'}
-						responseType='code,token'
+						onSuccess={googleLogIn}
+						onFailure={handleGoogleLoginFailure}
 						id="googleLogin"
 						/>
 					</section>
