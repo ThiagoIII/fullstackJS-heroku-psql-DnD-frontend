@@ -47,6 +47,7 @@ export function handleCharValidation(e, user){
 		}
 		
 }
+
 export function handleQuestValidation(e, user){
 	e.preventDefault()
 		let nameQuestInput = document.getElementById('questname')
@@ -61,5 +62,20 @@ export function handleQuestValidation(e, user){
 			}
 			return questToRegister
 		}
-		
+}
+
+export function handleCharQuestValidation(e, opt, user){
+	e.preventDefault()
+	let nameInput = document.getElementById(`${opt}name`)
+	let historyInput = document.getElementById(`${opt}history`)
+	if(nameInput.value === '' || historyInput.value === ''){
+		return alert('Fields cannot be empty')
+	} else {
+		let toRegister = {
+			[`${opt}name`]: nameInput.value,
+			[`${opt}history`]: historyInput.value,
+			id: user.id
+		}
+		return toRegister
+	}
 }

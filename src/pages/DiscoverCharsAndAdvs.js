@@ -16,6 +16,8 @@ export default function DiscoverCharsAndAdvs() {
 	return (
 		<section id="discoverCharsAndAdvs">
 			<h1>Discover Chars And Advs</h1>
+			<input id="searchCQ" type="search" name="search" placeholder="Type here your char or quest"></input>
+			<button type="button" name="search">Search</button>
 			{
 				charsAndAdvs !== null 
 				? <><h3>Chars</h3>
@@ -37,7 +39,7 @@ export default function DiscoverCharsAndAdvs() {
 																		) : null}
 																		</ul>
 					</>
-				:null
+				: <h2>Getting chars and quests from the database! Will be here in a moment!</h2>
 			}
 			
 		</section>

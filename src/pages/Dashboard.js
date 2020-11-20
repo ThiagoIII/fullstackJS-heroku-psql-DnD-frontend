@@ -13,6 +13,7 @@ const Dashboard = () => {
 	const [userInfo, setUserInfo] = useState(null)
 
 	useEffect(() => {
+		console.log('dashboard user fecth')
 		let userDetails = JSON.parse(window.localStorage.getItem('userIdLoggedIn'))
 		try {
 			api.post('/fetchUserData', userDetails )
@@ -58,4 +59,4 @@ const Dashboard = () => {
 }
 	
 
-export default Dashboard
+export default React.memo(Dashboard)
