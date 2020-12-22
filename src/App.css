@@ -2,13 +2,14 @@ html, ::before, ::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  
+  scroll-behavior: smooth;
 }
 
 body div#root {
   min-height: 100vh;
   height: 100%;
-  background-image: url('./styles/antonio-j-manzanedo-red-dragon-manzanedo3.jpg');
+  background-image: url('./styles/antonio-j-manzanedo-red-dragon-manzanedo3.jpg'); 
+  background-position: center;
 }
 
 #root section {
@@ -19,7 +20,15 @@ body div#root {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: whitesmoke;
+  color: rgb(231, 229, 229);
+}
+
+#root section:not(#home) {
+  background-color: rgb(169, 24, 24);
+}
+
+#root #navbar {
+  background-color: rgb(169, 24, 24);
 }
 
 h1 {
@@ -38,6 +47,131 @@ h4 {
   margin: 0;
 }
 
+section form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 3%;
+}
+
+form label {
+  margin: 0;
+	font-size: 1.2rem;text-align: center;
+}
+
+form input {
+	font-size: 1rem;
+	margin: 0 0;
+}
+
+form button {
+  margin-bottom: 0.5rem;
+}
+
+ul {
+  list-style: none;
+  margin: 0 5%;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+section ul li {
+  border: solid 1px whitesmoke;
+  padding: 0 2%;
+
+}
+
+#discoverCharsAndAdvs h3 {
+  margin-bottom: 0.5rem;
+}
+
+#discoverCharsAndAdvs ul {
+  width: 90%;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+#discoverCharsAndAdvs li {
+  width: 50%;
+  max-width: 325px;
+}
+
+#dndLore ul {
+  list-style: square;
+  text-align: left;
+  width: 80%;
+}
+
+#dndLore li {
+  font-size: 1.5rem;
+  letter-spacing: 0.3rem;
+  border-bottom: 2px beige solid;
+  margin-top: 3rem;
+  max-width: 85%;
+}
+
+#dndLore li.addRemoveMarginDnDlore {
+  margin-top: 1rem;
+}
+
+#dndLore ul li:hover {
+  cursor: pointer;
+}
+
+#dndLore ul ul li {
+  word-break: break-word;
+  font-size: 1.3rem;
+  font-weight: normal;
+  letter-spacing: 0.1rem;
+  border-bottom: 1px beige solid;
+  padding: 0.3rem 0.5rem;
+  margin: 0 0 0.6rem 0;
+  background-color: rgb(175, 33, 33);
+  width: 100%;
+}
+
+#dndLore ul ul li:hover {
+  cursor: default;
+}
+
+.showList {
+  display: none;
+}
+
+.arrowDown {
+  font-size: 2rem;
+  transform: rotateZ(0);
+  transition: all 0.2s ease-out ;
+}
+
+.arrowUp {
+  transform: rotateZ(180deg);
+}
+
+.arrowDown:hover, .arrowUp:hover {
+  cursor: pointer;
+}
+
+#dashboard li {
+  font-size: 1.5rem;
+  margin: 0;
+  padding: 0.5rem;
+  border: solid 2px blueviolet;
+  background-color: rebeccapurple;
+}
+
+#dashboard li:not(:nth-child(2n)) {
+  margin-top: 1rem;
+}
+
+#searchCQ {
+  width: 20%;
+}
+
 @media screen and (min-width: 500px){
   h1 {
     font-size: 3.15rem;
@@ -51,6 +185,16 @@ h4 {
   h4 {
     font-size: 1.5rem;
   }
+
+  form label {
+    font-size: 1.5rem;
+  }
+
+  form button {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
 }
 
 @media screen and (min-width: 800px){
@@ -66,61 +210,25 @@ h4 {
   h4{
     font-size: 2rem;
   }
-}
 
+  form label {
+    font-size: 1.5rem;
+  }
 
+  #dndLore ul {
+    width: 40%;
+    justify-content: center;
+    align-items: flex-start;
+    max-width: 530px;
+  }
 
-#root section form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
+  #dndLore li {
+    font-size: 2.5rem;
+    width: 100%;
+  }
 
-#root form label {
-	font-size: 1.5rem;
-}
+  #dndLore ul ul{
+    width: 100%;
+  }
 
-#root form input {
-	font-size: 1rem;
-	margin: 0.5rem 0;
-}
-
-
-ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-
-#discoverCharsAndAdvs li:nth-child(3n) {
-  width: 80%;
-  text-align: center;
-  border-bottom: solid 2px white;  
-}
-
-
-
-#dashboard li {
-  font-size: 1.5rem;
-  margin: 0;
-  padding: 0.5rem;
-  border: solid 2px blueviolet;
-  background-color: rebeccapurple;
-}
-
-#dashboard li:not(:nth-child(2n)) {
-  margin-top: 1rem;
-}
-
-#googleLogin {
-  margin-top: 2rem;
-}
-
-#searchCQ {
-  width: 20%;
 }

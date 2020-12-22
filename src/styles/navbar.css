@@ -4,15 +4,11 @@ ul#navbar {
 	justify-content: center;
 	align-items: center;
 	flex-direction: row;
+	gap: 3%;
 	width: 100%;
 	margin: 0;
-	padding: 1rem 0 0 0;
 	height: 10vh;
-}
-
-#navbar li {
 	list-style: none;
-	margin: 0 0.25rem;
 }
 
 #navbar li:hover {
@@ -24,7 +20,6 @@ ul#navbar {
 	color: white;
 	font-size: 1rem;
 	font-weight: normal;
-	padding: 0.4rem 0.4rem 0.6rem 0.4rem;
 	transition: all 0.2s ease-out;
 }
 
@@ -35,14 +30,21 @@ ul#navbar {
 	text-decoration: underline;
 }
 
-@media screen and (min-width: 800px){
-
-	#navbar li {
-		margin: 0 2rem;
-	}
+@media screen and (min-width: 500px){
 
 	#navbar a {
-		font-size: 2rem;
+		font-size: 1.2rem;
+	}
+
+	#navbar a:hover {
+		font-size: 1.5rem;
+	}
+}
+
+@media screen and (min-width: 800px){
+
+	#navbar a {
+		font-size: 1.5rem;
 	}
 
 	#navbar a:hover {

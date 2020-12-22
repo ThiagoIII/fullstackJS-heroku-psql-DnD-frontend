@@ -1,62 +1,46 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useContext } from 'react'
 import { Redirect } from 'react-router-dom'
 import { GoogleLogout } from 'react-google-login';
 import { SignedStatusContext } from '../context/signedStatusContext/signedStatusContext'
-import api from '../services/api'
 import { logoutDashboard, logoutFailure } from '../helpers/handleLogOut'
 import CQform from '../components/forms/CQform'
 import UserList from '../components/UserList';
 
 
+
 const Dashboard = () => {
-	const { state, dispatch } = useContext(SignedStatusContext)
-	const [userInfo, setUserInfo] = useState(null)
+	const { state: { isLoggedIn, userInfo }, dispatch } = useContext(SignedStatusContext)
 
-	useEffect(() => {
-		console.log('dashboard user fecth')
-		let userDetails = JSON.parse(window.localStorage.getItem('userIdLoggedIn'))
-		try {
-			api.post('/fetchUserData', userDetails )
-			.then(response => setUserInfo(response.data.concat(userDetails)))
-		} catch (error) {
-			alert('Problems fetching user info, sssssorry!')
-		}		
-	},[])
-
-	
+	let lists = localStorage.lists
+	const [chars, quests] = lists !== undefined ? JSON.parse(lists) : [[],[]]
 
 	return  <>
-		{	!state.isLoggedIn 
-				? <Redirect to={{
-					pathname: "/login"
-					}} /> 
-				: <section id='dashboard'>
-					<GoogleLogout
-						clientId="416809222050-fee34iiph6k9lmmis8qgse4a0g2gs6lr.apps.googleusercontent.com"
-						buttonText="Logout"
-						onLogoutSuccess={(dispatch) => logoutDashboard(dispatch)}
-						onFailure={logoutFailure}
-					/> 
-					<h1>Welcome,{userInfo !== null ? userInfo[2].name : 'Getting your name'} </h1>
-					{
-						userInfo !== null &&
-						userInfo[2].image &&
-						<img src={userInfo[2].image} alt={`${userInfo[2].name}ProfileImage`}/>
-					}
-					<button type="button" name="button" onClick={() => logoutDashboard(dispatch)}>Logout</button> 
-					{
-					userInfo && 
-					<>	
-						<CQform opt='char' userInfo={userInfo[2]} />
-						<CQform opt='quest' userInfo={userInfo[2]} />				
-						<UserList opt='char' userInfo={userInfo[0]} />
-						<UserList opt='quest' userInfo={userInfo[1]} />
-					</>
-					}
+	    {
+		!isLoggedIn 
+			? <Redirect to={{pathname: "/login"	}} /> 
+			: <section id='dashboard'>
+				<GoogleLogout clientId="416809222050-fee34iiph6k9lmmis8qgse4a0g2gs6lr.apps.googleusercontent.com"
+					buttonText="Logout"
+					onLogoutSuccess={(dispatch) => logoutDashboard(dispatch)}
+					onFailure={logoutFailure}/> 
+
+				{
+				userInfo !== {} && userInfo !== null
+					? <>
+						<h1>Welcome,{ userInfo.name } </h1>
+						{userInfo.image && <img src={userInfo.image} alt={`${userInfo.name}ProfileImage`}/>}
+						</>
+					: <h1>Getting your name!</h1>
+				}
+				<button type="button" name="button" onClick={() => logoutDashboard(dispatch)}>Logout</button> 
+				<CQform opt='char' userInfoId={userInfo.id}/>
+				<CQform opt='quest' userInfoId={userInfo.id}/>	
+				<UserList opt='char'  id={userInfo.id} list={chars}/>
+				<UserList opt='quest' id={userInfo.id} list={quests}/>
 				</section>
 		}
 	</>
 }
 	
 
-export default React.memo(Dashboard)
+export default Dashboard

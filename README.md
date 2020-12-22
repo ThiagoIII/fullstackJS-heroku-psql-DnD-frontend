@@ -1,23 +1,46 @@
 https://fullstack-js-heroku-psql-dn-d-frontend.vercel.app/
 
-So this is the frontend part of my Dnd like project, I did this project to learn a bit about full stack apps I've deployed it to Vercel to test it out and I am pretty happy with it, super easy and quick!
+This is the frontend part of my DnD-like project and the main reason that I did this project was to learn more about full stack apps and its parts, like DBs, sessions, auth proccesses and the back-to-front-to-back end conversation.
 
-Frontend: ReactJS with Hooks
-Backend: NodeJS/Express
-Database: Heroku Postgres
-Hosted at: Vercel and Heroku
+I've deployed it to Vercel and I am pretty happy with it, super easy and quick!
 
-Don't mind the design! Still working on that, gotta implement dark theme, reduced motion rules and will apply some Material components
+  - Frontend: ReactJS with Hooks
+  - Backend: NodeJS/Express
+  - Database: Heroku Postgres
+  - Hosted at: Vercel and Heroku
+  - Password encryption: bcrypt, no access tokens, logged in status is kept in the Context API
+  - Login: user/password and Google
+  - Responsive: yes
+  - Accessibility: 
 
-I wrote a couple of very basics tests just to get started, I will now read more about them and maybe take a course or watch some youtube tutorials.
+Don't mind the design! I know it is missing dark theme, reduced motion rules etc..., design was not the focus here.
 
-Implemented a basic Google login and I will read more about login sessions.
+I didn´t use custom hooks as I want to study a little more about on how to structure my code.
 
-I will keep working on it indefinitely, adding features and improving the code.
+I wrote a couple of very basics tests using react test library and jest just to get the overall way of implementation.
 
-Feel free to fork it and PR, and I hope you enjoy as much as I did.
+No PWA as well since it wasn't my main concern here.
 
-Thank you!
+Implemented a basic Google login using the npm package react-google-login.
+
+I chose not to implement a login token exchange in this project to keep things a bit more simple as I will read more on the subject and implement it on another project along with OAuth 2.0. 
+
+The auth here proccess is a simple comparison using bcrypt, password + salt = hash and then test with hash and password = true or false.
+
+
+
+I'm about to finish this project and start a new one, problably a online education plataform for university courses like specializations and masters and all. I will be using AWS, OAuth, login sessions, JWT, custom Hooks, Context API, maybe react-query, caching and the focus will be on getting better at Javascript and at structuring my React code. 
+
+Feel free to fork it and PR, and I hope you enjoy this project as much as I did.
+
+Thank you very much!
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

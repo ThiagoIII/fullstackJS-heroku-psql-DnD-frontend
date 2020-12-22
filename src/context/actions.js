@@ -1,6 +1,6 @@
-export const handleChangeSignedStatus = (dispatch, signedStatus) => {
+export const handleChangeSignedStatus = (dispatch, statusUser) => {
 	dispatch({
 			type: 'CHANGESIGNEDSTATUS',
-			payload: signedStatus
+			payload: statusUser
 		})
 }

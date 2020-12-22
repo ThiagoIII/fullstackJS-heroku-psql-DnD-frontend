@@ -7,19 +7,24 @@ import DiscoverDnDLore from './pages/DiscoverDnDLore'
 import DiscoverCharsAndAdvs from './pages/DiscoverCharsAndAdvs'
 import Dashboard from './pages/Dashboard';
 import Navbar from './components/Navbar';
+import SignedStatus from './context/signedStatusContext/signedStatusContext';
 
-export default function Routes(props) {
+
+export default function Routes() {
+
 	return (
 		<BrowserRouter>
-			<Navbar />
-			<Switch> 
-				<Route path="/" exact component={Home} />
-				<Route path="/register" component={Register} />
-				<Route path="/discoverDnDLore" component={DiscoverDnDLore} />
-				<Route path="/discoverCharsAndAdvs" component={DiscoverCharsAndAdvs} />
-				<Route path="/login" component={Login} />
-				<Route path="/dashboard" component={Dashboard} />
-			</Switch>
+			<SignedStatus>
+				<Navbar />
+				<Switch> 
+					<Route path="/" exact component={Home} />
+					<Route path="/register" component={Register} />
+					<Route path="/discoverDnDLore" component={DiscoverDnDLore} />
+					<Route path="/discoverCharsAndAdvs" component={DiscoverCharsAndAdvs} />
+					<Route path="/login" component={Login} />
+					<Route path="/dashboard" component={Dashboard} /> 
+				</Switch>
+			</SignedStatus>
 		</BrowserRouter>
 	);
 }
