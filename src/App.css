@@ -1,234 +1,251 @@
-html, ::before, ::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  scroll-behavior: smooth;
+html,
+::before,
+::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
 }
 
 body div#root {
-  min-height: 100vh;
-  height: 100%;
-  background-image: url('./styles/antonio-j-manzanedo-red-dragon-manzanedo3.jpg'); 
-  background-position: center;
+    min-height: 100vh;
+    height: 100%;
+    background-image: url('./styles/antonio-j-manzanedo-red-dragon-manzanedo3.jpg');
+    background-position: center;
 }
 
 #root section {
-  width: 100%;
-  min-height: 100vh;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: rgb(231, 229, 229);
+    width: 100%;
+    min-height: 100vh;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: rgb(231, 229, 229);
 }
 
 #root section:not(#home) {
-  background-color: rgb(169, 24, 24);
+    background-color: rgb(169, 24, 24);
 }
 
 #root #navbar {
-  background-color: rgb(169, 24, 24);
+    background-color: rgb(169, 24, 24);
 }
 
 h1 {
-  font-size: 2rem;
-  text-align: center;
-  margin: 0 0 2rem 0 ;
+    font-size: 2rem;
+    text-align: center;
+    margin: 0 0 2rem 0;
 }
 
 h3 {
-  font-size: 1.5rem;
-  margin: 0;
+    font-size: 1.5rem;
+    margin: 0;
 }
 
 h4 {
-  font-size: 1rem;
-  margin: 0;
+    font-size: 1rem;
+    margin: 0;
+}
+
+h5 {
+    width: 90%;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: normal;
 }
 
 section form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 0 3%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 3%;
+    border: solid 1px snow;
 }
 
 form label {
-  margin: 0;
-	font-size: 1.2rem;text-align: center;
+    margin: 0;
+    font-size: 1.2rem;
+    text-align: center;
 }
 
 form input {
-	font-size: 1rem;
-	margin: 0 0;
+    font-size: 1rem;
+    margin: 0 0;
 }
 
 form button {
-  margin-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
 }
 
 ul {
-  list-style: none;
-  margin: 0 5%;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
+    list-style: none;
+    margin: 0 5%;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 section ul li {
-  border: solid 1px whitesmoke;
-  padding: 0 2%;
-
+    border: solid 1px whitesmoke;
+    padding: 0 2%;
 }
 
 #discoverCharsAndAdvs h3 {
-  margin-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
 }
 
-#discoverCharsAndAdvs ul {
-  width: 90%;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.5rem;
+#discoverCharsAndAdvs ul,
+#dashboard ul {
+    width: 90%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
 }
 
-#discoverCharsAndAdvs li {
-  width: 50%;
-  max-width: 325px;
+#discoverCharsAndAdvs li,
+#dashboard li {
+    width: 50%;
+    max-width: 325px;
 }
 
 #dndLore ul {
-  list-style: square;
-  text-align: left;
-  width: 80%;
+    list-style: square;
+    text-align: left;
+    width: 80%;
 }
 
 #dndLore li {
-  font-size: 1.5rem;
-  letter-spacing: 0.3rem;
-  border-bottom: 2px beige solid;
-  margin-top: 3rem;
-  max-width: 85%;
+    font-size: 1.5rem;
+    letter-spacing: 0.3rem;
+    border-bottom: 2px beige solid;
+    margin-top: 3rem;
+    max-width: 85%;
 }
 
 #dndLore li.addRemoveMarginDnDlore {
-  margin-top: 1rem;
+    margin-top: 1rem;
 }
 
 #dndLore ul li:hover {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 #dndLore ul ul li {
-  word-break: break-word;
-  font-size: 1.3rem;
-  font-weight: normal;
-  letter-spacing: 0.1rem;
-  border-bottom: 1px beige solid;
-  padding: 0.3rem 0.5rem;
-  margin: 0 0 0.6rem 0;
-  background-color: rgb(175, 33, 33);
-  width: 100%;
+    word-break: break-word;
+    font-size: 1.3rem;
+    font-weight: normal;
+    letter-spacing: 0.1rem;
+    border-bottom: 1px beige solid;
+    padding: 0.3rem 0.5rem;
+    margin: 0 0 0.6rem 0;
+    background-color: rgb(175, 33, 33);
+    width: 100%;
 }
 
 #dndLore ul ul li:hover {
-  cursor: default;
+    cursor: default;
 }
 
 .showList {
-  display: none;
+    display: none;
 }
 
 .arrowDown {
-  font-size: 2rem;
-  transform: rotateZ(0);
-  transition: all 0.2s ease-out ;
+    font-size: 2rem;
+    transform: rotateZ(0);
+    transition: all 0.2s ease-out;
 }
 
 .arrowUp {
-  transform: rotateZ(180deg);
+    transform: rotateZ(180deg);
 }
 
-.arrowDown:hover, .arrowUp:hover {
-  cursor: pointer;
+.arrowDown:hover,
+.arrowUp:hover {
+    cursor: pointer;
 }
 
-#dashboard li {
-  font-size: 1.5rem;
-  margin: 0;
-  padding: 0.5rem;
-  border: solid 2px blueviolet;
-  background-color: rebeccapurple;
+@media screen and (min-width: 500px) {
+    h1 {
+        font-size: 3.15rem;
+        margin: 0 0 3rem 0;
+    }
+
+    h3 {
+        font-size: 2rem;
+    }
+
+    h4 {
+        font-size: 1.5rem;
+    }
+
+    h5 {
+        font-size: 1.4rem;
+    }
+
+    form label {
+        font-size: 1.5rem;
+    }
+    #logoutButtons {
+        display: flex;
+        flex-direction: row;
+        width: 30%;
+        justify-content: center;
+        align-items: center;
+        gap: 10%;
+    }
+
+    .logoutbutton,
+    .logoutbutton span {
+        font-size: 1rem;
+        color: rgb(17, 17, 17);
+    }
+
+    .logoutnormal {
+        width: 6rem;
+    }
+
+    form button {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
 }
 
-#dashboard li:not(:nth-child(2n)) {
-  margin-top: 1rem;
-}
+@media screen and (min-width: 800px) {
+    h1 {
+        font-size: 5rem;
+        margin: 0 0 4rem 0;
+    }
 
-#searchCQ {
-  width: 20%;
-}
+    h3 {
+        font-size: 3rem;
+    }
 
-@media screen and (min-width: 500px){
-  h1 {
-    font-size: 3.15rem;
-    margin: 0 0 3rem 0;
-  }
+    h4 {
+        font-size: 2rem;
+    }
 
-  h3 {
-    font-size: 2rem;
-  }
+    form label {
+        font-size: 1.5rem;
+    }
 
-  h4 {
-    font-size: 1.5rem;
-  }
+    #dndLore ul {
+        width: 40%;
+        justify-content: center;
+        align-items: flex-start;
+        max-width: 530px;
+    }
 
-  form label {
-    font-size: 1.5rem;
-  }
+    #dndLore li {
+        font-size: 2.5rem;
+        width: 100%;
+    }
 
-  form button {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-  }
-
-}
-
-@media screen and (min-width: 800px){
-  h1 {
-    font-size: 5rem;
-    margin: 0 0 4rem 0;
-  }
-
-  h3 {
-    font-size: 3rem;
-  }
-
-  h4{
-    font-size: 2rem;
-  }
-
-  form label {
-    font-size: 1.5rem;
-  }
-
-  #dndLore ul {
-    width: 40%;
-    justify-content: center;
-    align-items: flex-start;
-    max-width: 530px;
-  }
-
-  #dndLore li {
-    font-size: 2.5rem;
-    width: 100%;
-  }
-
-  #dndLore ul ul{
-    width: 100%;
-  }
-
+    #dndLore ul ul {
+        width: 100%;
+    }
 }

@@ -1,60 +1,50 @@
-import React, { useEffect,  useState } from 'react'
+import React from 'react'
 import api from '../services/api'
 
-const UserList = (props) => {
-	const [listLocalState, setListLocal] = useState([])
+const UserList2 = props => {
+    const [listLocal, setListLocal] = React.useState(undefined)
 
-	const { opt, id , list } = props
+    const { opt, userId: id } = props
 
-	useEffect(() => {
-		if(list.length === 0){
-			let fromLocal = opt === 'char' ? localStorage.noChars : localStorage.noQuests
-			if(opt === 'char' && fromLocal !== undefined ){
-				return 
-			} else if(opt === 'quest' && fromLocal !== undefined){
-				return 
-			} else {
-				api.post('/fetchUserData', { id })
-					.then(res => {
-						if(res.status !== 400){
-							if(opt === 'char' && res.data[0].length === 0 ){
-								localStorage.noChars = 'no chars registered' 
-							} else if(opt === 'quest' && res.data[1].length === 0){
-								localStorage.noQuests = 'no quests registered'
-							} else {
-								localStorage.lists = JSON.stringify(res.data)
-								opt === 'char' ? setListLocal(res.data[0]) : setListLocal(res.data[1])
-							}
-						} else {
-							return alert(`Problems ${res.data}`)
-						}
-						
-					})
-					.catch(error => alert(`Problems fetching user info, sssorry! Here is the error message : ${error.response.data}`))
-			}
-			
-		} 
-	},[list, id, opt])
+    let list = localStorage[`${opt}`]
+    let listFinal = list !== undefined ? JSON.parse(list) : listLocal
 
-	const h3Title = opt.toUpperCase()
-	let listFinal = list.length === 0 ? listLocalState : list
+    React.useEffect(() => {
+        if (list === undefined) {
+            api.post('/fetchUserData', { id }).then(res => {
+                if (opt === 'char') {
+                    localStorage[`${opt}`] = JSON.stringify(res.data[0])
+                    setListLocal(res.data[0])
+                } else {
+                    localStorage[`${opt}`] = JSON.stringify(res.data[1])
+                    setListLocal(res.data[1])
+                }
+            })
+        }
+    }, [id, list, opt])
 
-	return 	<>
-				<h3>{h3Title}S</h3>
-				<ul>
-				{listFinal !== null && listFinal !== undefined && listFinal.length > 0  
-						? listFinal
-							.map(item =>
-								<>
-									<li>{item[`${opt}name`]}</li>
-									{opt === 'char'
-										? <li>{item[`${opt}history`]}</li>
-										: <li>{item[opt]}</li>
-									}
-								</>) 
-						: <h4>No {opt}s registered from you!</h4>}
-				</ul>
-			</>
+    return (
+        <>
+            <h3>Your {opt[0].toUpperCase() + opt.slice(1)}s</h3>
+            <ul>
+                {listFinal === undefined ? (
+                    <p>If you got something we'll get it!</p>
+                ) : (
+                    listFinal.map(item => (
+                        <li>
+                            <p>Char name: {item[`${opt}name`]}</p> {/* name */}
+                            <p>
+                                History:
+                                {opt === 'char'
+                                    ? item[`${opt}history`]
+                                    : item[opt]}
+                            </p>
+                        </li>
+                    ))
+                )}
+            </ul>
+        </>
+    )
 }
 
-export default React.memo(UserList)
+export default UserList2
